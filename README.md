@@ -54,26 +54,26 @@ https://docs.google.com/presentation/d/1hnrGc3LZklYWVU1Rk8dheLg5EjzEvzBb6xPYzr5g
     - `Logistic Regression`, `Random Forest`, `SVM`, `KNN`.
      - Ансамблевые методы, такие как градиентный бустинг.
 - **Шаги**:
-    1. **Разделение данных на тренировочную и тестовую выборки**.
+    - **Разделение данных на тренировочную и тестовую выборки**.
         ```python
         from sklearn.model_selection import train_test_split
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
         ```
-    2. **Обучение модели на тренировочных данных**.
+    - **Обучение модели на тренировочных данных**.
         ```python
         from sklearn.ensemble import RandomForestClassifier
             
         model = RandomForestClassifier(n_estimators=100, random_state=42)
         model.fit(X_train, y_train)
         ```
-    3. **Оценка модели на тестовых данных**: использование метрик, таких как accuracy, precision, recall, F1-score.
+    - **Оценка модели на тестовых данных**: использование метрик, таких как accuracy, precision, recall, F1-score.
         ```python
         from sklearn.metrics import classification_report
             
         y_pred = model.predict(X_test)
         print(classification_report(y_test, y_pred))
         ```
-    4. **Подбор гиперпараметров**: с использованием GridSearchCV или RandomizedSearchCV для улучшения модели.
+    - **Подбор гиперпараметров**: с использованием GridSearchCV или RandomizedSearchCV для улучшения модели.
         ```python
         from sklearn.model_selection import GridSearchCV
             
@@ -85,7 +85,7 @@ https://docs.google.com/presentation/d/1hnrGc3LZklYWVU1Rk8dheLg5EjzEvzBb6xPYzr5g
         grid_search = GridSearchCV(estimator=model, param_grid=param_grid, cv=5, n_jobs=-1, verbose=2)
         grid_search.fit(X_train, y_train)
         ```
-    5. **Визуализация важности признаков**: и результатов классификации.
+    - **Визуализация важности признаков**: и результатов классификации.
         ```python
         importances = model.feature_importances_
         indices = np.argsort(importances)[::-1]
@@ -108,13 +108,13 @@ https://docs.google.com/presentation/d/1hnrGc3LZklYWVU1Rk8dheLg5EjzEvzBb6xPYzr5g
 - **Другие методы: `DBSCAN`, `AgglomerativeClustering`** (метрики были хуже)
 
 - **Шаги**:
-    1. **Стандартизация данных**: нормализация признаков для обеспечения равного вклада в результат.
+    - **Стандартизация данных**: нормализация признаков для обеспечения равного вклада в результат.
         ```python
         from sklearn.preprocessing import StandardScaler
         scaler = StandardScaler()
         data_scaled = scaler.fit_transform(data)
         ```
-    2. **Определение оптимального числа кластеров**: с помощью метода локтя (Elbow Method) и силуэтного анализа (Silhouette Score).
+    - **Определение оптимального числа кластеров**: с помощью метода локтя (Elbow Method) и силуэтного анализа (Silhouette Score).
         ```python
         from sklearn.cluster import KMeans
         import matplotlib.pyplot as plt
@@ -130,18 +130,18 @@ https://docs.google.com/presentation/d/1hnrGc3LZklYWVU1Rk8dheLg5EjzEvzBb6xPYzr5g
         plt.ylabel('Inertia')
         plt.show()
         ```
-    3. **Применение алгоритма кластеризации**.
+    - **Применение алгоритма кластеризации**.
         ```python
         kmeans = KMeans(n_clusters=3, random_state=42)
         clusters = kmeans.fit_predict(data_scaled)
         ```
-    4. **Визуализация результатов**: построение 2D и 3D графиков для визуализации кластеров.
+    - **Визуализация результатов**: построение 2D и 3D графиков для визуализации кластеров.
          ```python
         import seaborn as sns
         sns.scatterplot(x=data_scaled[:, 0], y=data_scaled[:, 1], hue=clusters, palette='viridis')
         plt.show()
         ```
-    5. **Оценка качества кластеризации**: с помощью метрик, таких как силуэтный коэффициент, индекс Калинского-Харабаза и индекс Дэвиса-Болдина.
+    - **Оценка качества кластеризации**: с помощью метрик, таких как силуэтный коэффициент, индекс Калинского-Харабаза и индекс Дэвиса-Болдина.
         ```python
         from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
             
