@@ -1,6 +1,6 @@
 ### Топалиди Александра Валерьевна 412479. Тема проекта: разведочный анализ некоторого набора данных.
 
-# Yields Predictions
+# Prediction of chemical reaction yields
 
 ## Описание:
 
